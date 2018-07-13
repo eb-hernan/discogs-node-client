@@ -1,0 +1,28 @@
+{
+  "name": "discogs-node-client",
+  "version": "0.0.1",
+  "description": "DiscoGS API node client",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eb-hernan/discogs-node-client.git"
+  },
+  "keywords": [
+    "discogs",
+    "artist",
+    "node"
+  ],
+  "author": "Hernan Cussi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eb-hernan/discogs-node-client/issues"
+  },
+  "homepage": "https://github.com/eb-hernan/discogs-node-client#readme",
+  "dependencies": {
+    "disconnect": "^1.2.1"
+  }
+}

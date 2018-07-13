@@ -4,6 +4,7 @@
   "description": "DiscoGS API node client",
   "main": "index.js",
   "scripts": {
+    "mongo": "/usr/local/opt/mongodb@3.4/bin/mongod --dbpath=data/db/",
     "start": "node index.js",
     "test": "echo \\\"Error: no test specified\\\" && exit 1"
   },
@@ -23,6 +24,8 @@
   },
   "homepage": "https://github.com/eb-hernan/discogs-node-client#readme",
   "dependencies": {
-    "disconnect": "^1.2.1"
+    "disconnect": "^1.2.1",
+    "lodash": "^4.17.10",
+    "mongodb": "^3.1.1"
   }
 }

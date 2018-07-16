@@ -20,7 +20,7 @@ class DiscoGS {
     search({nextPage}) {
 
         return new Promise((resolve, reject) => {
-
+            console.log(`Getting page: ${nextPage}`);
             this._db.search({
                 type: 'artist',
                 per_page: PAGE_SIZE,
@@ -30,17 +30,15 @@ class DiscoGS {
                         id,
                         name: title,
                         imageUrl: cover_image,
-                        thumb: thumb,
+                        thumb,
                     }));
 
-                resolve({
-                    artists,
-                    pagination,
-                    isNextPage: nextPage < pagination.pages,
-                });
+                console.log('Pagination:', pagination);
+
+                resolve({artists, pagination});
             })
             .catch((err) => {
-                reject(err);
+                reject(err.message);
             });
 
         });

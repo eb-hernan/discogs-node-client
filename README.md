@@ -17,7 +17,7 @@ Clone this repository and `cd` into it in a terminal window.
 
 4. Install [`Robo3T`](https://robomongo.org/)
 
-5. Connect to [`localhost:27017`](http://localhost:27017)
+5. Connect to http://localhost:27017
 
 ## Node
 
@@ -27,4 +27,4 @@ Clone this repository and `cd` into it in a terminal window.
 
 3. Confirm that has been added correctly `printenv | grep DISCOGS_TOKEN`
 
-4. `npm start`
+4. To populate the database with the discogs artists: `npm start`

@@ -11,27 +11,41 @@ console.log('Starting the disgogs import process...');
 
 const getPage = (nextPage) => {
 
-    discoGS.search({nextPage}).then(({
-        artists,
-        pagination,
-        isNextPage,
-    }) => {
-        console.log('pagination', pagination);
-        console.log('isNextPage', isNextPage);
+    return new Promise((resolve, reject) => {
 
         mongoPromise.then(() => {
-            mongoDB.insertMany(artists).then((result) => {
-                console.log(`inserted ${result.insertedCount}`);
-                mongoDB.disconnect();
+
+            discoGS.search({nextPage}).then(({artists,pagination}) => {
+                mongoDB.insertMany(artists).then((result) => {
+                    console.log(`inserted ${result.insertedCount}`);
+                    // api page limit of 100!
+                    if (nextPage >= pagination.pages) {
+                        resolve();
+                    } else {
+                        getPage(nextPage + 1).then(() => {
+                            resolve();
+                        }).catch((err) => {
+                            reject(err);
+                        });
+                    }
+                });
             }).catch((err) => {
-                mongoDB.disconnect();
+                reject(err);
             });
+
+        }).catch((err) => {
+            reject(err);
         });
 
     });
+
 };
 
-getPage(1);
+getPage(1).catch((err) => {
+    console.log(err);
+}).then(() => {
+    mongoDB.disconnect();
+});
 
 
 // db.getRelease(176126, (err, data) => {

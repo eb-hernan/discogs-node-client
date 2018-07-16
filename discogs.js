@@ -45,6 +45,10 @@ class DiscoGS {
 
     }
 
+    getImage(url) {
+        return this._db.getImage(url);
+    }
+
 }
 
 module.exports = DiscoGS;

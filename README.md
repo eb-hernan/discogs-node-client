@@ -5,7 +5,13 @@ DiscoGS API client for node JS
 
 Clone this repository and `cd` into it in a terminal window.
 
-1. `npm install`
+1. Install [`nvm`](https://gist.github.com/d2s/372b5943bce17b964a79)
+
+2. Install `nvm install v9.8.0`
+
+3. Check node version `node -v`
+
+4. `npm install`
 
 ## Database
 
@@ -28,3 +34,7 @@ Clone this repository and `cd` into it in a terminal window.
 3. Confirm that has been added correctly `printenv | grep DISCOGS_TOKEN`
 
 4. To populate the database with the discogs artists: `npm start`
+
+## Load Test
+
+1. Run load testing `npm test` (Take several minutes to finish)

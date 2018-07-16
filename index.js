@@ -25,15 +25,18 @@ const getPage = (nextPage) => {
                         getPage(nextPage + 1).then(() => {
                             resolve();
                         }).catch((err) => {
+                            // stop as soon one error in mongo is found
                             reject(err);
                         });
                     }
                 });
             }).catch((err) => {
+                // stop as soon one error in discogs api is found
                 reject(err);
             });
 
         }).catch((err) => {
+            // stop as soon one error in mongo is found
             reject(err);
         });
 
@@ -46,16 +49,3 @@ getPage(1).catch((err) => {
 }).then(() => {
     mongoDB.disconnect();
 });
-
-
-// db.getRelease(176126, (err, data) => {
-//     const {resource_url:url} = data.images[0];
-
-//     db.getImage(url)
-//         .then((err, data, rateLimit) => {
-//             // Data contains the raw binary image data
-//             console.log('url', url);
-//             console.log('data', data);
-//             console.log('rateLimit', rateLimit);
-//         });
-// });
